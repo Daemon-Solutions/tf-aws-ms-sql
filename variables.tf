@@ -23,16 +23,6 @@ variable "azs" {
   default = ["eu-west-1a","eu-west-1b","eu-west-1c"]
 }
 
-## IAM profile
-
-variable "profile" {
-  default = "rdgw"
-}
-
-
-
-
-
 ## Userdata Variables
 
 variable "userdata" {
