@@ -1,0 +1,24 @@
+$drives="${drives}"
+$names="${names}"
+
+New-Item c:\drives.txt -type file  -force -value $drives
+New-Item c:\names.txt -type file  -force -value $names
+
+
+cls
+
+$letters=(Get-Content -Path C:\drives.txt) -split ','
+
+$labels=(Get-Content -Path C:\names.txt) -split ','
+
+for($i=1; $i -le 4; $i++){
+
+
+Initialize-Disk -PartitionStyle MBR -PassThru -Number $i
+
+New-Partition  -DriveLetter $letters[$i-1] -UseMaximumSize -DiskNumber $i
+
+Format-Volume -FileSystem NTFS -NewFileSystemLabel $labels[$i-1] -Confirm:$false -DriveLetter $letters[$i-1]
+
+
+}
