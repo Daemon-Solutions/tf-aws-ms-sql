@@ -23,17 +23,12 @@ variable "azs" {
   default = ["eu-west-1a","eu-west-1b","eu-west-1c"]
 }
 
-variable "domain_name" {}
-
 ## IAM profile
 
 variable "profile" {
   default = "rdgw"
 }
 
-# ADS vars
-
-variable "domain_password" {}
 
 
 
@@ -94,8 +89,6 @@ variable "admin_users" {
 }
 
 variable "vpc_id" {}
-
-variable "vpc_cidr" {}
 
 variable "ads_sg" {}
 
