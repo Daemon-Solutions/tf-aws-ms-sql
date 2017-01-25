@@ -25,3 +25,28 @@ module "ms-sql" {
     }
 
 
+EXAMPLE to go in bashton-windows\aws\terraform\infra\20-sql.tf
+
+
+module "ms-sql" {
+  source = "../localmodules/tf-aws-ms-sql"
+
+customer                = "${var.customer}"
+envname                 = "${var.envname}"
+envtype                 = "${var.envtype}"
+azs                     = "${var.azs}"
+
+key_name                = "${var.key_name}"
+userdata                = "${data.terraform_remote_state.vpc.domain_connect_userdata_rendered}"
+vpc_id                  = "${data.terraform_remote_state.vpc.vpc_id}"
+private_subnets         = "${data.terraform_remote_state.vpc.private_subnets}"
+ads_sg                  = "${data.terraform_remote_state.vpc.ads_sg_id}"
+rdgw_external_sg_id     = "${data.terraform_remote_state.vpc.rdgw_external_sg_id}"
+private_subnets_cidrs   = "${data.terraform_remote_state.vpc.private_subnets_cidrs}"
+
+disk_sizes              = ["10","20","30","40"]
+disk_names              = ["SystemDB","tempDB","userDB","userLOGS"]
+disk_letter             = ["v","u","t","s"]
+
+
+}
