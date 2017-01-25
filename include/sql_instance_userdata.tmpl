@@ -13,6 +13,11 @@ $labels=(Get-Content -Path C:\names.txt) -split ','
 
 for($i=1; $i -le 4; $i++){
 
+$drive_letter=$letters[$i-1] + ":"
+
+  if ((test-path "$drive_letter") -eq $false)
+
+{
 
 Initialize-Disk -PartitionStyle MBR -PassThru -Number $i
 
@@ -21,4 +26,6 @@ New-Partition  -DriveLetter $letters[$i-1] -UseMaximumSize -DiskNumber $i
 Format-Volume -FileSystem NTFS -NewFileSystemLabel $labels[$i-1] -Confirm:$false -DriveLetter $letters[$i-1]
 
 
+
+}
 }

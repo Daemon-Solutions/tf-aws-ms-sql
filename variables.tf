@@ -82,7 +82,7 @@ variable "vpc_id" {}
 
 variable "ads_sg" {}
 
-variable "rdgw_internal_sg_id" {}
+variable "rdgw_external_sg_id" {}
 
 variable "disk_sizes" {type ="list"}
 variable "disk_names" {type ="list"}
