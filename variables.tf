@@ -12,7 +12,7 @@ variable "envname" {
 variable "azs" {
   description = "List of availability zones to create resources in"
   type = "list"
-  default = ["eu-west-1b","eu-west-1c","eu-west-1d"]
+  default = ["eu-west-1a","eu-west-1b","eu-west-1c"]
 }
 
 /* VPC variables */
